@@ -3,4 +3,4 @@
 </script>
 
 <a href={resolve('/demo/better-auth')}>better-auth</a>
-<p> demo works! </p>
+<p>demo works!</p>

@@ -1,24 +1,21 @@
-import { db } from "$lib/server/db";
-import { guest, party, type Guest, type Party } from "$lib/server/db/schema";
-import { sql } from "drizzle-orm";
-import type { PageServerLoad } from "../$types";
+import { db } from '$lib/server/db';
+import { guest, party, type Guest } from '$lib/server/db/schema';
+import { eq } from 'drizzle-orm';
+import type { PageServerLoad } from '../$types';
 
 export const load: PageServerLoad = async ({ params }) => {
     const party_id = params.id;
 
-    const parties: Party[] = await db.select()
-        .from(party)
-        .where(sql`${party.id} = ${party_id}`)
-        .limit(1);
+    const the_party = await db.query.party.findFirst({
+        where: eq(party.id, party_id)
+    });
 
-    const this_party = parties[0];
-
-    const guests: Guest[] = await db.select()
-        .from(guest)
-        .where(sql`${guest.party_id} = ${party_id}`);
+    const guests: Guest[] = await db.query.guest.findMany({
+        where: eq(guest.party_id, party_id)
+    });
 
     return {
-        party: this_party,
-        guests: guests,
+        party: the_party,
+        guests: guests
     };
-}
+};

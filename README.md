@@ -20,78 +20,78 @@
 ## Front end
 
 - [ ] Layout
-    + [x] Mobile
-    + [x] Desktop
-    + [x] make routes
-    + [ ] Pretty
-    + [ ] Theme
-        * Golden Glow
-            - 7c6a0a
-            - babd8d
-            - ffdac6
-            - fa9500
-            - eb6424
-        * Spring Garden
-            - 8cb369
-            - f4e285
-            - f4a259
-            - 5b8e7d
-            - bc4b51
-        * Dark Sunset
-            - 335c67
-            - fff3b0
-            - e09f3e
-            - 9e2a2b
-            - 540b0e
+  - [x] Mobile
+  - [x] Desktop
+  - [x] make routes
+  - [ ] Pretty
+  - [ ] Theme
+    - Golden Glow
+      - 7c6a0a
+      - babd8d
+      - ffdac6
+      - fa9500
+      - eb6424
+    - Spring Garden
+      - 8cb369
+      - f4e285
+      - f4a259
+      - 5b8e7d
+      - bc4b51
+    - Dark Sunset
+      - 335c67
+      - fff3b0
+      - e09f3e
+      - 9e2a2b
+      - 540b0e
 - [ ] Home
-    + [ ] When
-    + [ ] Where
-    + [ ] Who
-    + [ ] Schedge
+  - [ ] When
+  - [ ] Where
+  - [ ] Who
+  - [ ] Schedge
 - [ ] RSVP
-    + [ ] Get group
-    + [ ] Flow
-        * [ ] Search for party by names of guests
-        * [ ] Select party
-        * [ ] edit party
-        * [ ] save or finalize
-        * [ ]
+  - [ ] Get group
+  - [ ] Flow
+    - [ ] Search for party by names of guests
+    - [ ] Select party
+    - [ ] edit party
+    - [ ] save or finalize
+    - [ ]
 - [ ] Registry
-    + [ ] Zola?
-    + [ ] Embedded link to aggregator
+  - [ ] Zola?
+  - [ ] Embedded link to aggregator
 - [ ] FAQ
-    + [ ] Attire
-    + [ ] Plus Ones <- invites will list all invitees
-    + [ ] Alcohol
-    + [ ] Photos
+  - [ ] Attire
+  - [ ] Plus Ones <- invites will list all invitees
+  - [ ] Alcohol
+  - [ ] Photos
 - [ ] About
-    + [ ] us
-    + [ ] cats
-    + [ ] how we met
-    + [ ] proposal story
+  - [ ] us
+  - [ ] cats
+  - [ ] how we met
+  - [ ] proposal story
 - [ ] Admin
-    + [ ] view
-    + [ ] edit
-    + [ ] maybe this can just be dev tools
+  - [ ] view
+  - [ ] edit
+  - [ ] maybe this can just be dev tools
 - [ ] photos
-    + get a list
+  - get a list
 
 ## Back end
 
 - [ ] RSVP
-    + [ ] get group
-    + [ ] push group
+  - [ ] get group
+  - [ ] push group
 - [ ] guests
-    + [ ] get all
-    + [ ] get group
-    + [ ] get group
+  - [ ] get all
+  - [ ] get group
+  - [ ] get group
 - [ ] group
-    + id
-    + name
-    + rsvp'd
+  - id
+  - name
+  - rsvp'd
 - [ ] guest
-    + id
-    + name
-    + group_id
-    + adult?
-    + rsvp'd
+  - id
+  - name
+  - group_id
+  - adult?
+  - rsvp'd

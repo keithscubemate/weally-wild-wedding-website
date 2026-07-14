@@ -1,1 +1,1 @@
-<p> registry works! </p>
+<p>registry works!</p>
