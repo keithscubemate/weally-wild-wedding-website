@@ -15,7 +15,7 @@ export const actions: Actions = {
         const fal = "%" + first + "%" + last + "%";
 
         const score_query =
-            sql<number>`${like(guest.name, f)} + ${like(guest.name, l)} + ${like(guest.name, fal)}`;
+            sql<number>`(${like(guest.name, f)}) + (${like(guest.name, l)}) + (${like(guest.name, fal)})`.as("score");
 
         const ids = await db.select({
             party_id: guest.party_id,
