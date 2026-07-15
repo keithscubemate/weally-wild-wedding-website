@@ -10,7 +10,7 @@ CREATE TABLE `__new_guest` (
 	FOREIGN KEY (`party_id`) REFERENCES `party`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
-INSERT INTO `__new_guest`("id", "name", "party_id", "is_rsvp", "is_adult", "notes") SELECT "id", "name", "party_id", "is_rsvp", "is_adult", "notes" FROM `guest`;--> statement-breakpoint
+INSERT INTO `__new_guest`("id", "name", "party_id", "is_rsvp", "is_adult", "notes") SELECT "id", "name", "group_id", "is_rsvp", "is_adult", "notes" FROM `guest`;--> statement-breakpoint
 DROP TABLE `guest`;--> statement-breakpoint
 ALTER TABLE `__new_guest` RENAME TO `guest`;--> statement-breakpoint
 PRAGMA foreign_keys=ON;

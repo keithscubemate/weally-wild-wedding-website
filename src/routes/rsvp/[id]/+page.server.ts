@@ -1,5 +1,6 @@
 import { db } from '$lib/server/db';
-import { guest, party, type Guest } from '$lib/server/db/schema';
+import { guest, party, } from '$lib/server/db/schema';
+import type { Guest } from '$lib/server/db/schema';
 import { and, eq } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
 import { error, fail, type Actions } from '@sveltejs/kit';
@@ -46,7 +47,7 @@ export const actions: Actions = {
             });
         }
 
-        const finalized = Number(data.get('finalize') ?? '0');
+        const finalized = Math.min(Number(data.get('finalize') ?? '0'), 1);
         const notes = data.get('notes')?.toString() ?? '';
 
         await db
@@ -64,7 +65,8 @@ export const actions: Actions = {
             })
             .then((res) => res.map((rec) => rec.id));
 
-        const attendings = data.getAll('attending').map((d) => d.toString());
+        const given_attendings = data.getAll('attending').map((d) => d.toString());
+        const attendings = given_attendings.filter((id) => guest_ids.find((other) => other == id));
         const not_attend = guest_ids.filter((id) => !attendings.find((other) => other == id));
 
         const attend_queries = attendings.map((id) =>

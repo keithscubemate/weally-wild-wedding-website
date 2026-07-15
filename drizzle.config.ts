@@ -3,7 +3,6 @@ import { defineConfig } from 'drizzle-kit';
 export default process.env.DB_MODE == 'local' ?
     defineConfig({
         schema: './src/lib/server/db/schema.ts',
-        out: './migrations',
         dialect: 'sqlite',
         dbCredentials: {
             url: process.env.DATABASE_URL!,
@@ -13,7 +12,6 @@ export default process.env.DB_MODE == 'local' ?
     }) :
     defineConfig({
         schema: './src/lib/server/db/schema.ts',
-        out: './migrations',
         dialect: 'turso',
         dbCredentials: {
             url: process.env.TURSO_DB_URL!,
