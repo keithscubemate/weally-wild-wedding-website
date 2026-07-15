@@ -6,16 +6,34 @@
 
 	let party = $state(untrack(() => data.party));
 	let guests = $state(untrack(() => data.guests));
-</script>
 
-<p>{JSON.stringify(form)}</p>
+	const refresh = () => {
+		party = structuredClone(data.party);
+		guests = structuredClone(data.guests);
+	};
+</script>
 
 <h2>Party: {party.name} ({party.id})</h2>
 
-<form method="POST" use:enhance>
+{#if form?.success}
+	<p>Successfully submitted</p>
+{:else if form?.message}
+	<p>ERROR: {form.message}</p>
+{/if}
+
+<form
+	method="POST"
+	use:enhance={() => {
+		return async ({ update }) => {
+			await update({ reset: false });
+			refresh();
+		};
+	}}
+>
 	<div>
 		<label>
 			Finalize {party.finalized}:
+			<input type="hidden" name="party_name" value={party.name} />
 			<input type="hidden" name="party_id" value={party.id} />
 			<input
 				type="checkbox"
@@ -30,7 +48,7 @@
 	<div>
 		<h3>Guests</h3>
 		<ul>
-			{#each guests as guest}
+			{#each guests as guest (guest.id)}
 				<li>
 					<label>
 						{guest.name}:
@@ -58,13 +76,6 @@
 
 	<div>
 		<button type="submit"> Submit </button>
-		<button
-			onclick={() => {
-				party = structuredClone(data.party);
-				guests = structuredClone(data.guests);
-			}}
-		>
-			Clear
-		</button>
+		<button onclick={refresh}> Clear </button>
 	</div>
 </form>

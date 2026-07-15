@@ -7,7 +7,7 @@
 <ul>
 	{#each data.parties as party}
 		<a href="/rsvp/{party.id}">
-			<p>{party.name} -- {party.is_rsvp}</p>
+			<p>{party.name} -- {party.finalized}</p>
 		</a>
 	{:else}
 		<li><p>No parties :(</p></li>
