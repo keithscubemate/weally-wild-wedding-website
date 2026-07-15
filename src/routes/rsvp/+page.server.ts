@@ -1,7 +1,7 @@
 import { db } from '$lib/server/db';
-import { guest } from '$lib/server/db/schema';
+import { guest, party } from '$lib/server/db/schema';
 import type { Actions } from '@sveltejs/kit';
-import { like, sql } from 'drizzle-orm';
+import { like, sql, eq } from 'drizzle-orm';
 
 export const actions: Actions = {
     default: async ({ request }) => {
@@ -14,17 +14,24 @@ export const actions: Actions = {
         const l = '%' + last + '%';
         const fal = '%' + first + '%' + last + '%';
 
-        const score_query =
-            sql<number>`(${like(guest.name, f)}) + (${like(guest.name, l)}) + (${like(guest.name, fal)})`.as(
-                'score'
-            );
+        const score_query = sql<number>`
+                sum(
+                    (${like(guest.name, f)}) +
+                    (${like(guest.name, l)}) +
+                    (${like(guest.name, fal)})
+                )
+            `.as('score');
 
         const ids = await db
             .select({
-                party_id: guest.party_id,
-                score: score_query
+                id: party.id,
+                name: party.name,
+                score: score_query,
             })
-            .from(guest)
+            .from(party)
+            .innerJoin(guest, eq(party.id, guest.party_id))
+            .groupBy(party.id)
+            .having(sql`score > 0`)
             .orderBy(sql`score desc`);
 
         console.log(ids);
