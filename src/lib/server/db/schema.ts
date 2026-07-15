@@ -22,5 +22,3 @@ export const guest = sqliteTable('guest', {
 
 export type Party = InferSelectModel<typeof party>;
 export type Guest = InferSelectModel<typeof guest>;
-
-export * from './auth.schema';

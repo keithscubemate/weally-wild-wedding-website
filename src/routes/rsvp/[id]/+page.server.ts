@@ -1,5 +1,5 @@
 import { db } from '$lib/server/db';
-import { guest, party, } from '$lib/server/db/schema';
+import { guest, party } from '$lib/server/db/schema';
 import type { Guest } from '$lib/server/db/schema';
 import { and, eq } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';

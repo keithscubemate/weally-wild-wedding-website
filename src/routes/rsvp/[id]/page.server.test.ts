@@ -34,7 +34,10 @@ function makeFormRequest(fields: Record<string, string | string[]>) {
     return new Request('http://localhost', { method: 'POST', body: formData });
 }
 
-async function seedParty(db: TestDb, overrides: Partial<{ finalized: number; notes: string }> = {}) {
+async function seedParty(
+    db: TestDb,
+    overrides: Partial<{ finalized: number; notes: string }> = {}
+) {
     const partyId = crypto.randomUUID();
     await db.insert(party).values({ id: partyId, name: 'Test Party', ...overrides });
     return partyId;
@@ -59,7 +62,10 @@ describe('load', () => {
         const partyId = await seedParty(testDb);
         await seedGuests(testDb, partyId, ['Alice', 'Bob']);
 
-        const result = await load({ params: { id: partyId } } as any) as { party: Party; guests: Guest[] };
+        const result = (await load({ params: { id: partyId } } as any)) as {
+            party: Party;
+            guests: Guest[];
+        };
 
         expect(result.party.id).toBe(partyId);
         expect(result.guests).toHaveLength(2);
