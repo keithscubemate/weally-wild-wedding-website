@@ -13,7 +13,8 @@
 - `bun run db:generate`: gen migration
 - `bun run db:migrate`: run migration
 - `bun run db:studio`: open drizzle studio
-- `bun run auth:schema`: generate the auth schema
+- `bun run test`: run tests
+- `bun run test:watch`: run tests in watch mode
 
 # Plan
 
@@ -24,38 +25,21 @@
     - [x] Desktop
     - [x] make routes
     - [ ] Pretty
-    - [ ] Theme
-        - Golden Glow
-            - 7c6a0a
-            - babd8d
-            - ffdac6
-            - fa9500
-            - eb6424
-        - Spring Garden
-            - 8cb369
-            - f4e285
-            - f4a259
-            - 5b8e7d
-            - bc4b51
-        - Dark Sunset
-            - 335c67
-            - fff3b0
-            - e09f3e
-            - 9e2a2b
-            - 540b0e
+    - [x] Theme
+        - [x] Golden Glow
+        - [x] Spring Garden
+        - [x] Dark Sunset
 - [ ] Home
     - [ ] When
     - [ ] Where
     - [ ] Who
-    - [ ] Schedge
-- [ ] RSVP
-    - [ ] Get group
-    - [ ] Flow
-        - [ ] Search for party by names of guests
-        - [ ] Select party
-        - [ ] edit party
-        - [ ] save or finalize
-        - [ ]
+    - [ ] Schedule
+- [x] RSVP
+    - [ ] Search for party by guest name
+    - [ ] Select party
+    - [x] Edit party (attendance, notes)
+    - [x] Save or finalize
+    - [ ] Good-faith protection (cookie TBD)
 - [ ] Registry
     - [ ] Zola?
     - [ ] Embedded link to aggregator
@@ -65,33 +49,36 @@
     - [ ] Alcohol
     - [ ] Photos
 - [ ] About
-    - [ ] us
-    - [ ] cats
-    - [ ] how we met
-    - [ ] proposal story
-- [ ] Admin
-    - [ ] view
-    - [ ] edit
-    - [ ] maybe this can just be dev tools
-- [ ] photos
-    - get a list
+    - [ ] Us
+    - [ ] Cats
+    - [ ] How we met
+    - [ ] Proposal story
+- [x] Admin
+    - [x] db:studio for local editing
+    - [n] Admin route (if non-technical access needed)
+- [ ] Photos
+    - [ ] get a list
 
 ## Back end
 
-- [ ] RSVP
-    - [ ] get group
-    - [ ] push group
-- [ ] guests
-    - [ ] get all
-    - [ ] get group
-    - [ ] get group
-- [ ] group
+- [x] RSVP
+    - [x] get party
+    - [x] update party
+- [x] Party
     - id
     - name
-    - rsvp'd
-- [ ] guest
+    - finalized
+    - notes
+- [x] Guest
     - id
     - name
-    - group_id
-    - adult?
-    - rsvp'd
+    - party_id
+    - is_adult
+    - is_rsvp
+
+## Testing
+
+- [x] Unit tests for rsvp/[id] route
+    - [x] load function (happy path, 404)
+    - [x] form action (happy path, 404, 409)
+    - [x] security (cross-party manipulation, finalize clamping)
