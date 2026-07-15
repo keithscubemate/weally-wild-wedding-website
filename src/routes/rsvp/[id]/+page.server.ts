@@ -41,7 +41,9 @@ export const actions: Actions = {
         }
 
         if (the_party.finalized) {
-            return fail(409, { message: `Party ${party_name} [${party_id}] is already finalized.` });
+            return fail(409, {
+                message: `Party ${party_name} [${party_id}] is already finalized.`
+            });
         }
 
         const finalized = Number(data.get('finalize') ?? '0');

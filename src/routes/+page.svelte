@@ -1,7 +1,7 @@
 <script>
-	import { dev } from '$app/env';
+    import { dev } from '$app/env';
 
-	let { data } = $props();
+    let { data } = $props();
 </script>
 
 <h1>Austin & Mariah</h1>
@@ -30,19 +30,19 @@
 <h3>Sunday</h3>
 
 {#if dev}
-	<div class="links">
-		<a href="/about"> about </a>
-		<a href="/admin"> admin </a>
-		<a href="/demo"> demo </a>
-		<a href="/faq"> faq </a>
-		<a href="/registry"> registry </a>
-		<a href="/rsvp"> rsvp </a>
-	</div>
+    <div class="links">
+        <a href="/about"> about </a>
+        <a href="/admin"> admin </a>
+        <a href="/demo"> demo </a>
+        <a href="/faq"> faq </a>
+        <a href="/registry"> registry </a>
+        <a href="/rsvp"> rsvp </a>
+    </div>
 {/if}
 
 <style>
-	.links {
-		display: flex;
-		flex-direction: column;
-	}
+    .links {
+        display: flex;
+        flex-direction: column;
+    }
 </style>
