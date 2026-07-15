@@ -1,15 +1,26 @@
 <script lang="ts">
-    let { data } = $props();
+    import { enhance } from '$app/forms';
+    let { form } = $props();
 </script>
 
-<p>rsvp works!</p>
+{#if form?.success}
+    <p>Successfully submitted</p>
+{/if}
 
-<ul>
-    {#each data.parties as party}
-        <a href="/rsvp/{party.id}">
-            <p>{party.name} -- {party.finalized}</p>
-        </a>
-    {:else}
-        <li><p>No parties :(</p></li>
-    {/each}
-</ul>
+<h2>Find your party:</h2>
+
+<p>Please enter the first and last name of one of the members of your party.</p>
+
+<form method="POST" use:enhance>
+    <div>
+        <label>
+            First:
+            <input required name="firstName" />
+        </label>
+        <label>
+            Last:
+            <input required name="lastName" />
+        </label>
+    </div>
+    <button type="submit">Submit</button>
+</form>
