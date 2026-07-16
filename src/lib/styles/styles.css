@@ -114,9 +114,7 @@ blockquote {
 }
 
 img {
-    border: 4px solid #999;
     max-width: 100%;
-    vertical-align: middle;
 }
 
 button,
