@@ -72,6 +72,14 @@ body {
     color: var(--text-color);
 }
 
+:where(h1) {
+    font-family: 'Sacramento', sans-serif;
+}
+
+:where(h2, h3, h4, h5, h6) {
+    font-family: 'Gourmand', sans-serif;
+}
+
 main {
     flex: 1;
 }
@@ -80,12 +88,6 @@ main {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-}
-
-:where(h2, h3, h4, h5, h6) {
-    font-family: 'Gourmand', sans-serif;
-    background: var(--bg-color);
-    color: var(--text-color);
 }
 
 a {

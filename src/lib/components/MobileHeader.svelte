@@ -94,12 +94,6 @@
     a {
         color: inherit;
         &.nav-links {
-            &::before {
-                content: '[  ';
-            }
-            &::after {
-                content: '  ]';
-            }
             text-decoration: underline;
             font-weight: bold;
         }
