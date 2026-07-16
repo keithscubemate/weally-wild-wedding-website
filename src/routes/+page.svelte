@@ -23,15 +23,11 @@
         justify-content: left;
 
         & img {
-            border-radius: 10px;
             position: absolute;
             inset: 0;
             object-position: center 30%;
             object-fit: cover;
-            width: 100%;
-            height: 100%;
             z-index: 0;
-            box-shadow: 1px 2px 2px var(--border-over-shadow);
         }
 
         & h1 {

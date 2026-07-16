@@ -49,11 +49,11 @@
     - [x] Plus Ones <- invites will list all invitees
     - [ ] Alcohol
     - [ ] Photos
-- [ ] About
-    - [ ] Us
-    - [ ] Cats
-    - [ ] How we met
-    - [ ] Proposal story
+- [x] About
+    - [x] Us
+    - [x] Cats
+    - [x] How we met
+    - [x] Proposal story
 - [x] Admin
     - [x] db:studio for local editing
     - [n] Admin route (if non-technical access needed)
