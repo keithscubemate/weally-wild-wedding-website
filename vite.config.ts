@@ -11,7 +11,7 @@ export default defineConfig({
                     filename.split(/[/\\]/).includes('node_modules') ? undefined : true
             },
             adapter: adapter({
-                runtime: 'nodejs24.x',
+                runtime: 'nodejs24.x'
             }),
             preprocess: [mdsvex({ extensions: ['.svx', '.md'] })],
             extensions: ['.svelte', '.svx', '.md'],

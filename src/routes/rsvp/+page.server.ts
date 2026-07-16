@@ -1,6 +1,6 @@
 import { db } from '$lib/server/db';
 import { guest, party } from '$lib/server/db/schema';
-import type { Actions } from '@sveltejs/kit';
+import { fail, type Actions } from '@sveltejs/kit';
 import { like, sql, eq } from 'drizzle-orm';
 
 export const actions: Actions = {
@@ -22,12 +22,13 @@ export const actions: Actions = {
                 )
             `.as('score');
 
-        const ids = await db
+        const parties = await db
             .select({
                 id: party.id,
                 name: party.name,
+                finalized: party.finalized,
                 score: score_query,
-                guestNames: sql<string>`group_concat(${guest.name}, ', ')`.as(`guest_names`)
+                guestNames: sql<string>`group_concat(${guest.name}, ',')`.as(`guest_names`)
             })
             .from(party)
             .innerJoin(guest, eq(party.id, guest.party_id))
@@ -35,8 +36,20 @@ export const actions: Actions = {
             .having(sql`score > 0`)
             .orderBy(sql`score desc`);
 
-        console.log(ids);
+        if (parties.length == 0) {
+            fail(404, { message: 'No party was found with the first and last name provided.' });
+        }
 
-        return { success: true };
+        console.log(parties);
+
+        return {
+            success: true,
+            parties: [
+                ...parties.map((p) => ({
+                    ...p,
+                    guestNames: p.guestNames.split(',')
+                }))
+            ]
+        };
     }
 };
