@@ -5,7 +5,7 @@ export const party = sqliteTable('party', {
     id: text('id')
         .primaryKey()
         .$defaultFn(() => crypto.randomUUID()),
-    name: text('name').notNull(),
+    name: text('name').unique().notNull(),
     finalized: integer('finalized').notNull().default(0),
     notes: text('notes')
 });
@@ -14,7 +14,7 @@ export const guest = sqliteTable('guest', {
     id: text('id')
         .primaryKey()
         .$defaultFn(() => crypto.randomUUID()),
-    name: text('name').notNull(),
+    name: text('name').unique().notNull(),
     party_id: text('party_id').references(() => party.id, { onDelete: 'cascade' }),
     is_rsvp: integer('is_rsvp').notNull().default(0),
     is_adult: integer('is_adult').default(1)
